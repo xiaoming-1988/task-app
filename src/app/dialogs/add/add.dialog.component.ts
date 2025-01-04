@@ -3,6 +3,7 @@ import {Component, Inject} from '@angular/core';
 import {TaskService} from '../../services/task.service';
 import {FormControl, Validators} from '@angular/forms';
 import {Task} from '../../models/task';
+
 @Component({
   selector: 'app-add.dialog',
   templateUrl: '../../dialogs/add/add.dialog.html',

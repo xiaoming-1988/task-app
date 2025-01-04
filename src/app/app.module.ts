@@ -20,6 +20,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatSelectModule} from "@angular/material/select";
 
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import {MatSelectModule} from "@angular/material/select";
         MatToolbarModule,
         MatPaginatorModule,
         ReactiveFormsModule,
-        MatSelectModule
+        MatSelectModule,
+        ToastrModule.forRoot(),
     ],
   providers: [
     TaskService
