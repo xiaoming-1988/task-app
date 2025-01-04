@@ -1,5 +1,5 @@
 <div class="container">
-  <h3 mat-dialog-title>Issue id: {{task.id}}</h3>
+  <h3 mat-dialog-title>Task id: {{task.id}}</h3>
 
   <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
 
@@ -11,16 +11,23 @@
       </mat-form-field>
     </div>
 
-    <!--Contains mat-hint for characters count and has maxLengt set-->
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput #inputstate class="form-control" placeholder="Ist done" [(ngModel)]="task.done" name="done" maxlength="10" required >
+        <mat-label>ist done</mat-label>
+        <mat-select  placeholder="ist done" [(ngModel)]="task.done" [compareWith]="optionSelect" name="done" required>
+          <mat-option value="true">true</mat-option>
+          <mat-option value="false">false</mat-option>
+        </mat-select>
       </mat-form-field>
     </div>
 
     <div class="form">
         <mat-form-field color="accent">
-          <input matInput placeholder="Priority" [(ngModel)]="task.priority" name="priority">
+          <mat-select placeholder="priority" [(ngModel)]="task.priority" [compareWith]="optionSelect" name="priority" required>
+            <mat-option value="1">1-LOW</mat-option>
+            <mat-option value="2">2-NORMAL</mat-option>
+            <mat-option value="3">3-URGENT</mat-option>
+          </mat-select>
         </mat-form-field>
     </div>
 

@@ -8,9 +8,13 @@
   width: 100%;
 }
 
+.mat-mdc-form-field {
+  width: 95%;
+}
 .form {
   display: flex;
   padding-top: 6px;
+  padding-left: 10px;
 }
 
 .mat-form-field {

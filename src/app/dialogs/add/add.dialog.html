@@ -1,36 +1,46 @@
 <div class="container">
-  <h3 mat-dialog-title>Add new Issue</h3>
+  <h3 mat-dialog-title>Add new Task</h3>
 
   <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput #input class="form-control" placeholder="Name" [(ngModel)]="data.name" name="name" required >
+        <input matInput #input class="form-control" placeholder="Name" [(ngModel)]="task.name" name="name" required >
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput placeholder="type" [(ngModel)]="data.type" name="type" required>
+        <input matInput placeholder="type" [(ngModel)]="task.type" name="type" required>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput #inputstate class="form-control" placeholder="Ist done" [(ngModel)]="data.done" name="done" maxlength="10" required >
+        <mat-label>ist done</mat-label>
+        <mat-select placeholder="ist done" [(ngModel)]="task.done" name="done" maxlength="10" required>
+          <mat-option value="true">true</mat-option>
+          <mat-option value="false">false</mat-option>
+        </mat-select>
       </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput placeholder="priority" [(ngModel)]="data.priority" name="priority" required>
+        <mat-label>priority</mat-label>
+        <mat-select placeholder="priority" [(ngModel)]="task.priority" name="priority" required>
+          <mat-option value="1">1-LOW</mat-option>
+          <mat-option value="2">2-NORMAL</mat-option>
+          <mat-option value="3">3-URGENT</mat-option>
+        </mat-select>
       </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field color="accent">
-        <textarea matInput placeholder="description" [(ngModel)]="data.description" name="description"></textarea>
+        <textarea matInput placeholder="description" [(ngModel)]="task.description" name="description"></textarea>
       </mat-form-field>
     </div>
 

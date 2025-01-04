@@ -33,6 +33,20 @@ export class EditDialogComponent {
   }
 
   confirmEdit(): void {
+    console.log(this.task);
     this.taskService.updateTask(this.task);
+  }
+  optionSelect(a: any, b: any) {
+    if (a === b) {
+      return true;
+    }
+    if (a == b) {
+      return true;
+    }
+    if (a + '' ==  b + '') {
+      return true;
+    }
+
+    return false;
   }
 }

@@ -11,18 +11,15 @@ import {Task} from '../../models/task';
 
 export class AddDialogComponent {
   constructor(public dialogRef: MatDialogRef<AddDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: Task,
+              @Inject(MAT_DIALOG_DATA) public task: Task,
               public taskService: TaskService) { }
 
   formControl = new FormControl('', [
     Validators.required
-    // Validators.email,
   ]);
 
   getErrorMessage() {
-    return this.formControl.hasError('required') ? 'Required field' :
-      this.formControl.hasError('email') ? 'Not a valid email' :
-        '';
+    return this.formControl.hasError('required') ? 'Required field' : '';
   }
 
   submit() {
@@ -34,6 +31,6 @@ export class AddDialogComponent {
   }
 
   public confirmAdd(): void {
-    this.taskService.addTask(this.data);
+    this.taskService.addTask(this.task);
   }
 }

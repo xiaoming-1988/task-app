@@ -65,7 +65,7 @@ export class AppComponent implements OnInit {
   startEdit(i: number, task: Task) {
     this.id = task.id;
     const dialogRef = this.dialog.open(EditDialogComponent, {
-      data: task
+      data: {...task}
     });
 
     dialogRef.afterClosed().subscribe(result => {
