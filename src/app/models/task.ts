@@ -2,8 +2,9 @@ export interface Task {
   id: number;
   name: string;
   type: string;
-  done: boolean;
+  done: string;
   priority: number;
   created: string;
 
+  description: string;
 }

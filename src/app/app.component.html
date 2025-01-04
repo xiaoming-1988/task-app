@@ -1,13 +1,87 @@
+<div class="container mat-elevation-z8">
 
-<span>tasks</span>
-<ul>
-  <li *ngFor="let task of tasks">
-    <a>
-      <span class="badge">{{task.id}}</span>
-      <span class="badge">{{task.name}}</span>
-      <span class="badge">{{task.type}}</span>
-      <span class="badge">{{task.done}}</span>
-      <span class="badge">{{task.priority}}</span>
-    </a>
-  </li>
-</ul>
+  <div class="form">
+    <mat-form-field floatPlaceholder="never" color="accent">
+      <input matInput (keyup)="applyFilter($any($event.target).value)" placeholder="Filter Tasks">
+    </mat-form-field>
+  </div>
+
+  <mat-table #table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)" class="mat-cell">
+    ng update @angular/cli @angular/core
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+      <mat-cell *matCellDef="let row" >{{row.id}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.name}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Type</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.type}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="done">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Ist done</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.done}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="priority">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Priority</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.priority}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>description</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.description}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="created">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>created</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.created}}</mat-cell>
+    </ng-container>
+
+    <!-- actions -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>
+        <button mat-icon-button color="primary" (click)="addNew()">
+          add
+        </button>
+      </mat-header-cell>
+
+      <mat-cell *matCellDef="let row; let i=index;">
+        <button mat-icon-button color="accent" (click)="startEdit(i, row)">
+          edit
+        </button>
+
+        <button mat-icon-button color="accent" (click)="deleteItem(i, row)">
+          Delete
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+
+  <div class="no-results" [style.display]="dataSource.data.length == 0 ? '' : 'none'">
+    No results
+  </div>
+
+  <mat-paginator
+    #paginator
+    (page)="pageChangeEvent($event)"
+    [length]="totalRecords"
+    [pageSize]="pageSize"
+    [pageIndex]="pageNumber"
+    [pageSizeOptions]="[5, 10, 20, 50, 100]"
+    showFirstLastButtons>
+  </mat-paginator>
+</div>
