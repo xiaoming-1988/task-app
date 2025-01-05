@@ -5,12 +5,13 @@ import {PageTask} from "../models/pageTask";
 import {BehaviorSubject, Observable} from 'rxjs';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
-  private readonly API_URL = 'http://task.com:8080/api/v1/task/';
+  private readonly API_URL =environment.apiUrl +  '/api/v1/task/';
   dataChange: BehaviorSubject<Task[]> = new BehaviorSubject<Task[]>([]);
   // Temporarily stores data from dialogs
   constructor(

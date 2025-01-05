@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  task-frontend:
+    image: 'task-management-frontend:latest'
+    build:
+      context: .
+    container_name: task-frontend
+    networks:
+      - connectall
+    ports:
+      - "4200:4200"
+
+networks:
+  connectall:
+    name: connectall
