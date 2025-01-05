@@ -1,9 +1,11 @@
+import {TaskPriority} from "./TaskPriority";
+
 export interface Task {
   id: number;
   name: string;
   type: string;
   done: string;
-  priority: number;
+  priority: TaskPriority;
   created: Date;
 
   updated: Date;

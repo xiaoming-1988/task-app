@@ -37,35 +37,32 @@ export class TaskService {
         );
   }
 
-    // ADD, POST METHOD
   addTask(task: Task): void {
     this.httpClient.post(this.API_URL, task).subscribe(data => {
-      this.toasterService.success('Successfully added', "added successfully");
+      this.toasterService.success('Successfully added', "");
       },
       (err: HttpErrorResponse) => {
-      this.toasterService.error('Error occurred. Details: ' + err.name + ' ' + err.message, err.message);
+      this.toasterService.error('Error details: ' + err.error.details, err.error.message);
     });
    }
 
-    // UPDATE, PUT METHOD
   updateTask(task: Task): void {
     this.httpClient.put(this.API_URL + task.id, task).subscribe(data => {
         this.toasterService.success('Successfully edited', "updated");
       },
       (err: HttpErrorResponse) => {
-        this.toasterService.error('Error occurred. Details: ' + err.name + ' ' + err.message, err.message);
+        this.toasterService.error('Error details: ' + err.error.details, err.error.message);
       }
     );
   }
 
-  // DELETE METHOD
   deleteTask(id: number): void {
     this.httpClient.delete(this.API_URL + id).subscribe(data => {
       console.log(data);
         this.toasterService.success('Successfully deleted', "delete success");
       },
       (err: HttpErrorResponse) => {
-        this.toasterService.error('Error occurred. Details: ' + err.name + ' ' + err.message, err.message);
+        this.toasterService.error('Error details: ' + err.error.details, err.message);
       }
     );
   }

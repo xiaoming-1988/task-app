@@ -24,9 +24,9 @@
     <div class="form">
         <mat-form-field color="accent">
           <mat-select placeholder="priority" [(ngModel)]="task.priority" [compareWith]="optionSelect" name="priority" required>
-            <mat-option value="1">1-LOW</mat-option>
-            <mat-option value="2">2-NORMAL</mat-option>
-            <mat-option value="3">3-URGENT</mat-option>
+            <mat-option value="LOW">LOW</mat-option>
+            <mat-option value="NORMAL">NORMAL</mat-option>
+            <mat-option value="URGENT">URGENT</mat-option>
           </mat-select>
         </mat-form-field>
     </div>

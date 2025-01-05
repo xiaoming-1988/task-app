@@ -5,22 +5,24 @@
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput #input class="form-control" placeholder="Name" [(ngModel)]="task.name" name="name" required >
+        <input matInput #inputName class="form-control" placeholder="Name" [(ngModel)]="task.name" name="name" maxlength="64" required >
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+        <mat-hint align="end">{{inputName.value?.length || 0}}/64</mat-hint>
       </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput placeholder="type" [(ngModel)]="task.type" name="type" required>
+        <input matInput #inputType placeholder="type" [(ngModel)]="task.type" name="type" maxlength="32" required>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+        <mat-hint align="end">{{inputType.value?.length || 0}}/32</mat-hint>
       </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field color="accent">
         <mat-label>ist done</mat-label>
-        <mat-select placeholder="ist done" [(ngModel)]="task.done" name="done" maxlength="10" required>
+        <mat-select placeholder="ist done" [(ngModel)]="task.done" name="done" required>
           <mat-option value="true">true</mat-option>
           <mat-option value="false">false</mat-option>
         </mat-select>
@@ -31,16 +33,17 @@
       <mat-form-field color="accent">
         <mat-label>priority</mat-label>
         <mat-select placeholder="priority" [(ngModel)]="task.priority" name="priority" required>
-          <mat-option value="1">1-LOW</mat-option>
-          <mat-option value="2">2-NORMAL</mat-option>
-          <mat-option value="3">3-URGENT</mat-option>
+          <mat-option value="LOW">LOW</mat-option>
+          <mat-option value="NORMAL">NORMAL</mat-option>
+          <mat-option value="URGENT">URGENT</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field color="accent">
-        <textarea matInput placeholder="description" [(ngModel)]="task.description" name="description"></textarea>
+        <textarea matInput #taskDescriptionText placeholder="description" [(ngModel)]="task.description" name="description" maxlength="256"></textarea>
+        <mat-hint align="end">{{taskDescriptionText.value?.length || 0}}/256</mat-hint>
       </mat-form-field>
     </div>
 
