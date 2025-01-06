@@ -10,6 +10,7 @@ This project frontend for [task-management](https://github.com/xiaoming-1988/tas
 - docker
 
 ## Run the Application
+- Run `npm install`
 - Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
 - To build the task management application docker image
